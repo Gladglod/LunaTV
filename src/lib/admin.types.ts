@@ -24,6 +24,7 @@ export interface AdminConfig {
       banned?: boolean;
       enabledApis?: string[]; // 优先级高于tags限制
       tags?: string[]; // 多 tags 取并集限制
+      enabledDanmuApis?: string[];
     }[];
     Tags?: {
       name: string;
@@ -48,11 +49,19 @@ export interface AdminConfig {
   LiveConfig?: {
     key: string;
     name: string;
-    url: string;  // m3u 地址
+    url: string; // m3u 地址
     ua?: string;
     epg?: string; // 节目单
     from: 'config' | 'custom';
     channelNumber?: number;
+    disabled?: boolean;
+  }[];
+  DanmuConfig: {
+    key: string;
+    name: string;
+    api: string;
+    detail?: string;
+    from: 'config' | 'custom';
     disabled?: boolean;
   }[];
 }

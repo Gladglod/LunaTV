@@ -122,3 +122,15 @@ export interface SkipConfig {
   intro_time: number; // 片头时间（秒）
   outro_time: number; // 片尾时间（秒）
 }
+
+// 弹幕搜索结果数据结构
+export interface EpisodeItem {
+  episodeId: number;
+  episodeTitle: string;
+}
+
+export interface DanmuResult {
+  id: string;
+  title: string;
+  episodes: EpisodeItem[];
+}
