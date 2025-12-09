@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 
 import { DanmuResult, EpisodeItem } from '@/lib/types';
@@ -75,26 +76,7 @@ const DanmuSelector: React.FC<DanmuSelectorProps> = ({
     };
 
     loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [videoTitle]);
-
-  useEffect(() => {
-    if (!videoTitle) return;
-    const cacheKey = `danmu_cache_${videoTitle}`;
-    const loadData = async () => {
-      setLoading(true);
-      const results = await fetchDanmuData(videoTitle, value ? value : 1);
-      setDanmuSources(results);
-      setLoading(false);
-      localStorage.setItem(
-        cacheKey,
-        JSON.stringify({ data: results, time: Date.now() })
-      );
-    };
-
-    loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [value, videoTitle]);
 
   const handleBack = () => setActiveSource(null);
 
